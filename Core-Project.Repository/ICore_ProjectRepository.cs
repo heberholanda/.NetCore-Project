@@ -14,7 +14,7 @@ namespace Core_Project.Repository
         Task<bool> SaveChangesAsync();
 
         Task<Cliente[]> GetAllClientesAsync();
-        Task<Cliente[]> GetClienteAsyncById(int ClienteId);
+        Task<Cliente> GetClienteAsyncById(int ClienteId);
 
     }
 }
