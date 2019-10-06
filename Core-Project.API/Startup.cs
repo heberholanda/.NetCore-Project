@@ -31,7 +31,7 @@ namespace Core_Project.API
                 x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
             );
 
-            //services.AddScoped<ICore_ProjectRepository, Core_ProjectRepository>();
+            services.AddScoped<ICore_ProjectRepository, Core_ProjectRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors();

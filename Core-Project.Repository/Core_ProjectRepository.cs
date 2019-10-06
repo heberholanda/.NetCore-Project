@@ -43,12 +43,23 @@ namespace Core_Project.Repository
         {
             
             IQueryable<Cliente> query = _context.Clientes
-                .Include(c => c.Produtos);
+                .Include(c => c.Produtos)
+                .ThenInclude(d => d.ProdutoDetalhe);
 
-            query = query
-                .OrderByDescending(c => c.Id);
+            query = query.OrderByDescending(c => c.Id);
 
             return await query.ToArrayAsync();
+        }
+
+        public async Task<Cliente> GetClienteAsyncById(int ClienteId)
+        {
+            IQueryable<Cliente> query = _context.Clientes
+                .Include(c => c.Produtos)
+                .ThenInclude(d => d.ProdutoDetalhe);
+
+            query = query.OrderByDescending(c => c.Nome).Where(c => c.Id == ClienteId);
+
+            return await query.FirstOrDefaultAsync();
         }
     }
 }
