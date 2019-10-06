@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core-Project.Domain", "Core
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core-Project.Repository", "Core-Project.Repository\Core-Project.Repository.csproj", "{0873A805-A724-4254-8432-FA1C66A4359A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreProject.API", "CoreProject.API\CoreProject.API.csproj", "{C7E9468E-9988-4A21-8E3E-FC216453C475}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core-Project.API", "Core-Project.API\Core-Project.API.csproj", "{C7E9468E-9988-4A21-8E3E-FC216453C475}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

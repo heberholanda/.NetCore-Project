@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "CoreProject.API": {
+    "Core-Project.API": {
       "commandName": "Project",
       "launchBrowser": false,
       "launchUrl": "api/values",
