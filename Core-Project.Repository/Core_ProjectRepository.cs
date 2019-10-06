@@ -1,5 +1,7 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Core_Project.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Core_Project.Repository
 {
@@ -13,32 +15,40 @@ namespace Core_Project.Repository
 
         public void Add<T>(T entity) where T : class
         {
-            throw new System.NotImplementedException();
+            _context.Add(entity);
         }
 
         public void Delete<T>(T entity) where T : class
         {
-            throw new System.NotImplementedException();
+            _context.Remove(entity);
         }
 
         public void DeleteRange<T>(T[] entity) where T : class
         {
+            // Not implemented!
             throw new System.NotImplementedException();
         }
 
         public void Update<T>(T entity) where T : class
         {
-            throw new System.NotImplementedException();
+            _context.Update(entity);
         }
 
-        public Task<bool> SaveChangesAsync()
+        public async Task<bool> SaveChangesAsync()
         {
-            throw new System.NotImplementedException();
+            return (await _context.SaveChangesAsync()) > 0;
         }
 
-        public Task<Cliente[]> GetAllClientesAsync()
+        public async Task<Cliente[]> GetAllClientesAsync()
         {
-            throw new System.NotImplementedException();
+            
+            IQueryable<Cliente> query = _context.Clientes
+                .Include(c => c.Produtos);
+
+            query = query
+                .OrderByDescending(c => c.Id);
+
+            return await query.ToArrayAsync();
         }
     }
 }
