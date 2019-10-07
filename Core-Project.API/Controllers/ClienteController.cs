@@ -65,26 +65,26 @@ namespace Core_Project.API.Controllers
             return BadRequest(":(");
         }
 
-        [HttpPut]
+        [HttpPut("{ClienteId}")]
         public async Task<IActionResult> Put(int ClienteId, Cliente model)
         {
             try
             {
                 var cliente = await _repository.GetClienteAsyncById(ClienteId);
                 if (cliente == null) return NotFound();
+
                 _repository.Update(model);
 
                 if (await _repository.SaveChangesAsync()) {
-                    // Status Code 201
                     return Created($"/api/cliente/{model.Id}", model);
-                }
+                } 
             }
             catch (System.Exception)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "500 Internal Error!");
                 //throw;
             }
-            return BadRequest(":(");
+            return BadRequest();
         }
 
         [HttpDelete]

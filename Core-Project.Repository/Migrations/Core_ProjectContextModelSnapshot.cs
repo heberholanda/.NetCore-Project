@@ -23,7 +23,7 @@ namespace Core_Project.Repository.Migrations
 
                     b.Property<DateTime?>("DataCadastro");
 
-                    b.Property<int>("Documento");
+                    b.Property<string>("Documento");
 
                     b.Property<string>("Nome");
 
@@ -41,7 +41,11 @@ namespace Core_Project.Repository.Migrations
 
                     b.Property<string>("Nome");
 
-                    b.Property<int>("ProdutoDetalhesId");
+                    b.Property<string>("Peso");
+
+                    b.Property<int>("Quantidade");
+
+                    b.Property<string>("Tipo");
 
                     b.Property<decimal>("Valor");
 
@@ -52,39 +56,11 @@ namespace Core_Project.Repository.Migrations
                     b.ToTable("Produtos");
                 });
 
-            modelBuilder.Entity("Core_Project.Domain.ProdutoDetalhe", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Peso");
-
-                    b.Property<int?>("ProdutoId");
-
-                    b.Property<int>("Quantidade");
-
-                    b.Property<string>("Tipo");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProdutoId")
-                        .IsUnique();
-
-                    b.ToTable("ProdutoDetalhes");
-                });
-
             modelBuilder.Entity("Core_Project.Domain.Produto", b =>
                 {
                     b.HasOne("Core_Project.Domain.Cliente")
                         .WithMany("Produtos")
                         .HasForeignKey("ClienteId");
-                });
-
-            modelBuilder.Entity("Core_Project.Domain.ProdutoDetalhe", b =>
-                {
-                    b.HasOne("Core_Project.Domain.Produto")
-                        .WithOne("ProdutoDetalhe")
-                        .HasForeignKey("Core_Project.Domain.ProdutoDetalhe", "ProdutoId");
                 });
 #pragma warning restore 612, 618
         }

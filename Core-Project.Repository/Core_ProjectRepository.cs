@@ -43,10 +43,11 @@ namespace Core_Project.Repository
         {
             
             IQueryable<Cliente> query = _context.Clientes
-                .Include(c => c.Produtos)
-                .ThenInclude(d => d.ProdutoDetalhe);
+                .Include(c => c.Produtos);
 
-            query = query.OrderByDescending(c => c.Id);
+            query = query
+                .AsNoTracking()
+                .OrderByDescending(c => c.Id);
 
             return await query.ToArrayAsync();
         }
@@ -54,10 +55,11 @@ namespace Core_Project.Repository
         public async Task<Cliente> GetClienteAsyncById(int ClienteId)
         {
             IQueryable<Cliente> query = _context.Clientes
-                .Include(c => c.Produtos)
-                .ThenInclude(d => d.ProdutoDetalhe);
+                .Include(c => c.Produtos);
 
-            query = query.OrderByDescending(c => c.Nome).Where(c => c.Id == ClienteId);
+            query = query
+                .AsNoTracking()
+                .OrderByDescending(c => c.Nome).Where(c => c.Id == ClienteId);
 
             return await query.FirstOrDefaultAsync();
         }

@@ -10,7 +10,7 @@ namespace Core_Project.Repository
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<ProdutoDetalhe> ProdutoDetalhes { get; set; }
+
     }
 }
 
